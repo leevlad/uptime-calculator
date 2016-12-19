@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219183845) do
+ActiveRecord::Schema.define(version: 20161219191437) do
 
   create_table "incidents", force: :cascade do |t|
-    t.datetime "incident_time"
-    t.datetime "detection_time"
-    t.datetime "resolution_time"
-    t.datetime "closed_time"
+    t.datetime "incident_time",       null: false
+    t.datetime "detection_time",      null: false
+    t.datetime "resolution_time",     null: false
+    t.datetime "closed_time",         null: false
     t.text     "summary"
     t.string   "method_of_detection"
-    t.integer  "severity"
+    t.integer  "severity",            null: false
     t.string   "source_of_incident"
     t.text     "symptoms"
-    t.integer  "faulted_service_id"
-    t.text     "resolution"
+    t.integer  "faulted_service_id",  null: false
+    t.text     "resolution",          null: false
     t.text     "follow_ups"
     t.string   "contact_people"
     t.text     "tags"

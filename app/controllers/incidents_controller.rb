@@ -1,6 +1,6 @@
 class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
-  before_action :preload_services, only: [:new, :update]
+  before_action :preload_services, only: [:new, :update, :create]
 
   # GET /incidents
   # GET /incidents.json
