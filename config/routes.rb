@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :features
   get 'search/search'
 
   resources :incidents
