@@ -1,58 +1,79 @@
-= form_for @incident do |f|
-  - if @incident.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@incident.errors.count, "error")} prohibited this incident from being saved:"
-      %ul
-        - @incident.errors.full_messages.each do |msg|
-          %li= msg
+.incident-form
+  = form_for @incident do |f|
+    - if @incident.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@incident.errors.count, "error")} prohibited this incident from being saved:"
+        %ul
+          - @incident.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :incident_time
-    = f.datetime_select :incident_time
-  .field
-    = f.label :detection_time
-    = f.datetime_select :detection_time
-  .field
-    = f.label :resolution_time
-    = f.datetime_select :resolution_time
-  .field
-    = f.label :closed_time
-    = f.datetime_select :closed_time
-  .field
-    = f.label :summary
-    = f.text_area :summary
-  .field
-    = f.label :method_of_detection
-    = f.text_field :method_of_detection
-  .field
-    = f.label :severity
-    = f.number_field :severity
-  .field
-    = f.label :source_of_incident
-    = f.text_field :source_of_incident
-  .field
-    = f.label :symptoms
-    = f.text_area :symptoms
-  .field
-    = f.label :faulted_service
-    = f.number_field :faulted_service_id
-  .field
-    = f.label :resolution
-    = f.text_area :resolution
-  .field
-    = f.label :follow_ups
-    = f.text_area :follow_ups
-  .field
-    = f.label :contact_people
-    = f.text_field :contact_people
-  .field
-    = f.label :tags
-    = f.text_area :tags
-  .field
-    = f.label :hosts
-    = f.text_area :hosts
-  .field
-    = f.label :task_url
-    = f.text_field :task_url
-  .actions
-    = f.submit 'Save'
+    .field
+      .form-label.inline= f.label :incident_time
+      .form-datepicker.inline.datetimepicker.input-group.date
+        %span.inline
+          = f.text_field :incident_time
+        %span.input-group-addon.inline
+          %span.glyphicon.glyphicon-calendar
+
+    .field
+      .form-label.inline= f.label :detection_time
+      .form-datepicker.inline.datetimepicker.input-group.date
+        %span.inline
+          = f.text_field :detection_time
+        %span.input-group-addon.inline
+          %span.glyphicon.glyphicon-calendar
+
+    .field
+      .form-label.inline= f.label :resolution_time
+      .form-datepicker.inline.datetimepicker.input-group.date
+        %span.inline
+          = f.text_field :resolution_time
+        %span.input-group-addon.inline
+          %span.glyphicon.glyphicon-calendar
+
+    .field
+      .form-label.inline= f.label :closed_time
+      .form-datepicker.inline.datetimepicker.input-group.date
+        %span.inline
+          = f.text_field :closed_time
+        %span.input-group-addon.inline
+          %span.glyphicon.glyphicon-calendar
+
+    .field
+      = f.label :summary
+      = f.text_area :summary
+    .field
+      = f.label :method_of_detection
+      = f.text_field :method_of_detection
+    .field
+      = f.label :severity
+      = f.number_field :severity
+    .field
+      = f.label :source_of_incident
+      = f.text_field :source_of_incident
+    .field
+      = f.label :symptoms
+      = f.text_area :symptoms
+    .field
+      = f.label :faulted_service
+      = f.select "faulted_service_id", @services.map{|s| [s.name, s.id]}
+    .field
+      = f.label :resolution
+      = f.text_area :resolution
+    .field
+      = f.label :follow_ups
+      = f.text_area :follow_ups
+    .field
+      = f.label :contact_people
+      = f.text_field :contact_people
+    .field
+      = f.label :tags
+      = f.text_area :tags
+    .field
+      = f.label :hosts
+      = f.text_area :hosts
+    .field
+      = f.label :task_url
+      = f.text_field :task_url
+    .actions
+      = f.submit 'Save'

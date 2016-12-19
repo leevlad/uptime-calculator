@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :features
+  get 'home_page/index'
   get 'search/search'
 
   resources :incidents

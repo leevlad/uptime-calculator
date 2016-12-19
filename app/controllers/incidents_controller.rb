@@ -1,6 +1,6 @@
 class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :edit, :update, :destroy]
-  before_action :preload_services, only: [:new, :update, :create]
+  before_action :preload_services, only: [:new, :edit, :update, :create]
 
   # GET /incidents
   # GET /incidents.json
@@ -70,7 +70,7 @@ class IncidentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incident_params
-      params.require(:incident).permit(:incident_time, :detection_time, :resolution_time, :closed_time, :summary, :method_of_detection, :severity, :source_of_incident, :symptoms, :faulted_service, :resolution, :follow_ups, :contact_people, :tags, :hosts, :task_url)
+      params.require(:incident).permit(:incident_time, :detection_time, :resolution_time, :closed_time, :summary, :method_of_detection, :severity, :source_of_incident, :symptoms, :faulted_service_id, :resolution, :follow_ups, :contact_people, :tags, :hosts, :task_url)
     end
 
     def preload_services
