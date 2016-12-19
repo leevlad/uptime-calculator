@@ -1,0 +1,2 @@
+json.extract! incident, :id, :incident_time, :detection_time, :resolution_time, :closed_time, :summary, :method_of_detection, :severity, :source_of_incident, :symptoms, :faulted_service, :resolution, :follow_ups, :contact_people, :tags, :hosts, :task_url, :created_at, :updated_at
+json.url incident_url(incident, format: :json)

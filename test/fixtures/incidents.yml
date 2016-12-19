@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  incident_time: 2016-12-19 13:38:45
+  detection_time: 2016-12-19 13:38:45
+  resolution_time: 2016-12-19 13:38:45
+  closed_time: 2016-12-19 13:38:45
+  summary: MyText
+  method_of_detection: MyString
+  severity: 1
+  source_of_incident: MyString
+  symptoms: MyText
+  faulted_service: 1
+  resolution: MyText
+  follow_ups: MyText
+  contact_people: MyString
+  tags: MyText
+  hosts: MyText
+  task_url: MyString
+
+two:
+  incident_time: 2016-12-19 13:38:45
+  detection_time: 2016-12-19 13:38:45
+  resolution_time: 2016-12-19 13:38:45
+  closed_time: 2016-12-19 13:38:45
+  summary: MyText
+  method_of_detection: MyString
+  severity: 1
+  source_of_incident: MyString
+  symptoms: MyText
+  faulted_service: 1
+  resolution: MyText
+  follow_ups: MyText
+  contact_people: MyString
+  tags: MyText
+  hosts: MyText
+  task_url: MyString

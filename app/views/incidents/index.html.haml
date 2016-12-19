@@ -1,0 +1,51 @@
+%h1 Listing incidents
+
+%table
+  %thead
+    %tr
+      %th Incident time
+      %th Detection time
+      %th Resolution time
+      %th Closed time
+      %th Summary
+      %th Method of detection
+      %th Severity
+      %th Source of incident
+      %th Symptoms
+      %th Faulted service
+      %th Resolution
+      %th Follow ups
+      %th Contact people
+      %th Tags
+      %th Hosts
+      %th Task url
+      %th
+      %th
+      %th
+
+  %tbody
+    - @incidents.each do |incident|
+      %tr
+        %td= incident.incident_time
+        %td= incident.detection_time
+        %td= incident.resolution_time
+        %td= incident.closed_time
+        %td= incident.summary
+        %td= incident.method_of_detection
+        %td= incident.severity
+        %td= incident.source_of_incident
+        %td= incident.symptoms
+        %td= incident.faulted_service
+        %td= incident.resolution
+        %td= incident.follow_ups
+        %td= incident.contact_people
+        %td= incident.tags
+        %td= incident.hosts
+        %td= incident.task_url
+        %td= link_to 'Show', incident
+        %td= link_to 'Edit', edit_incident_path(incident)
+        %td= link_to 'Destroy', incident, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Incident', new_incident_path

@@ -1,0 +1,54 @@
+%p#notice= notice
+
+%p
+  %b Incident time:
+  = @incident.incident_time
+%p
+  %b Detection time:
+  = @incident.detection_time
+%p
+  %b Resolution time:
+  = @incident.resolution_time
+%p
+  %b Closed time:
+  = @incident.closed_time
+%p
+  %b Summary:
+  = @incident.summary
+%p
+  %b Method of detection:
+  = @incident.method_of_detection
+%p
+  %b Severity:
+  = @incident.severity
+%p
+  %b Source of incident:
+  = @incident.source_of_incident
+%p
+  %b Symptoms:
+  = @incident.symptoms
+%p
+  %b Faulted service:
+  = @incident.faulted_service
+%p
+  %b Resolution:
+  = @incident.resolution
+%p
+  %b Follow ups:
+  = @incident.follow_ups
+%p
+  %b Contact people:
+  = @incident.contact_people
+%p
+  %b Tags:
+  = @incident.tags
+%p
+  %b Hosts:
+  = @incident.hosts
+%p
+  %b Task url:
+  = @incident.task_url
+
+= link_to 'Edit', edit_incident_path(@incident)
+\|
+= link_to 'Back', incidents_path
