@@ -1,20 +1,12 @@
-%h1 Listing incidents
+- title "Incidents"
 
-%table
+%table.table.table-striped
   %thead
     %tr
-      %th Incident time
-      %th Detection time
-      %th Resolution time
-      %th Closed time
+      %th Id
+      %th Incident Time
       %th Summary
-      %th Method of detection
-      %th Severity
-      %th Source of incident
-      %th Symptoms
       %th Faulted service
-      %th Resolution
-      %th Follow ups
       %th Contact people
       %th Tags
       %th Hosts
@@ -26,26 +18,17 @@
   %tbody
     - @incidents.each do |incident|
       %tr
-        %td= incident.incident_time
-        %td= incident.detection_time
-        %td= incident.resolution_time
-        %td= incident.closed_time
+        %td= incident.id
+        %td= incident.incident_time.to_s(:short)
         %td= incident.summary
-        %td= incident.method_of_detection
-        %td= incident.severity
-        %td= incident.source_of_incident
-        %td= incident.symptoms
-        %td= incident.faulted_service
-        %td= incident.resolution
-        %td= incident.follow_ups
+        %td= incident.faulted_service.name
         %td= incident.contact_people
         %td= incident.tags
         %td= incident.hosts
         %td= incident.task_url
-        %td= link_to 'Show', incident
-        %td= link_to 'Edit', edit_incident_path(incident)
-        %td= link_to 'Destroy', incident, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= button_to 'Show', incident, class: "btn btn-sm btn-info", method: "get"
+        %td= button_to 'Edit', edit_incident_path(incident), class: "btn btn-sm btn-primary", method: "get"
+        %td= button_to 'Destroy', incident, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-sm btn-danger", method: "get"
 
 %br
 
-= link_to 'New Incident', new_incident_path
