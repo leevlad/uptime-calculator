@@ -1,6 +1,10 @@
 %p#notice= notice
 
+.show-page
 
-= link_to 'Edit', edit_service_path(@service)
-\|
-= link_to 'Back', services_path
+.service-details
+  .row= "Id: #{@service.id}"
+  .row= "Name: #{@service.name}"
+.service-actions
+  .action= link_to 'Edit', edit_service_path(@service)
+  .action= link_to 'Back', services_path
