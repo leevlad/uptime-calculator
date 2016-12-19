@@ -6,6 +6,7 @@
         %ul
           - @incident.errors.full_messages.each do |msg|
             %li= msg
+
     .field
       .form-label.inline= f.label :incident_time
       .form-datepicker.inline.datetimepicker.input-group.date

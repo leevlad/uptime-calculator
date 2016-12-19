@@ -1,5 +1,6 @@
 class Incident < ActiveRecord::Base
   belongs_to :faulted_service, class_name: "Service"
+  after_initialize :default_values
 
   validates :incident_time, presence: true
   validates :detection_time, presence: true
@@ -9,8 +10,17 @@ class Incident < ActiveRecord::Base
   validates :faulted_service_id, presence: true
   validates :resolution, presence: true
 
+  scope :reviewed, -> { where(reviewed: true) }
+  scope :not_reviewed, -> { where(reviewed: false) }
+
   def self.search(terms = "")
     sanitized = sanitize_sql_array(["to_tsquery('english', ?)", terms.gsub(/\s/, "+")])
     Incident.where("search_vector @@ #{sanitized}")
+  end
+
+  private
+
+  def default_values
+    self.reviewed ||= false
   end
 end
