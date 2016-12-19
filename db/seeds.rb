@@ -92,6 +92,26 @@ services = [
   "wp-engine"
 ]
 
+features = [
+  "Community e-mail notifications",
+  "Lightroom - Publish",
+  "Lightroom - Sync photos",
+  "Mobile - 500px.me redirect banner",
+  "Mobile - A/B Testing",
+  "Mobile - Create photo comment",
+  "Mobile - Discovery",
+  "Mobile - Gallery deep links",
+  "Mobile - Home feed",
+  "Mobile - Like photo",
+  "Mobile - Follow user",
+  "Mobile - Login and Registration",
+  "Mobile - Photo Upload"
+]
+
 services.each do |service_name|
   Service.create(name: service_name)
+end
+
+features.each do |feature_name|
+  Feature.create(name: feature_name)
 end
