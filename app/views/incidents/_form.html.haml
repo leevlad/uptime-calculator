@@ -35,7 +35,7 @@
     = f.text_area :symptoms
   .field
     = f.label :faulted_service
-    = f.number_field :faulted_service
+    = f.select "faulted_service_id", @services.map{|s| [s.name, s.id]}
   .field
     = f.label :resolution
     = f.text_area :resolution
