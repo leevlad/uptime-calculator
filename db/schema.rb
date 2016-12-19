@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219194456) do
+ActiveRecord::Schema.define(version: 20161219211708) do
 
   create_table "incidents", force: :cascade do |t|
     t.datetime "incident_time",       null: false
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20161219194456) do
     t.string   "task_url"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+  end
+
+  create_table "resiliency_matrix", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "feature_id"
+    t.integer "severity"
   end
 
   create_table "services", force: :cascade do |t|
