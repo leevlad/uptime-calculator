@@ -5,19 +5,13 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
-
-postgres:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  timeout: 5000
   database: uptime_calc_dev
   username: uptime_dev
   password: uptime_dev
@@ -27,8 +21,13 @@ postgres:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: uptime_calc_test
+  username: uptime_test
+  password: uptime_test
 
+# url is a postgres-style URL.
 production:
   <<: *default
-  database: db/production.sqlite3
+  pool: 10
+  timeout: 5000
+  url: <%= ENV['PSQL_PROD'] %>
