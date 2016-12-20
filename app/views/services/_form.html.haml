@@ -1,12 +1,17 @@
-= form_for @service do |f|
-  = "Name"
-  = f.text_field :name
+= form_for @service, :html => {:class => "form-horizontal", :id => "components"} do |f|
+  %fieldset
+    .tab-content
+      #input.tab-pane.active
+        .component
+          .form-group
+            = f.label :name, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_field :name, class: "form-control input-md"
+              %span.help-block Name of the service you want to add.
+            = f.submit "Save", class: "btn btn-primary"
   - if @service.errors.any?
     #error_explanation
       %h2= "#{pluralize(@service.errors.count, "error")} prohibited this service from being saved:"
       %ul
         - @service.errors.full_messages.each do |msg|
           %li= msg
-
-  .actions
-    = f.submit 'Save'
