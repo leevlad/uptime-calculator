@@ -1,6 +1,5 @@
 class AddTsvectorToServices < ActiveRecord::Migration
   def change
-    return unless ActiveRecord::Base.connection.adapter_name == "postgresql"
     # Create the search vector column
     add_column :services, :search_vector, 'tsvector'
 
