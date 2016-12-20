@@ -1,79 +1,124 @@
-.incident-form
-  = form_for @incident do |f|
-    - if @incident.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@incident.errors.count, "error")} prohibited this incident from being saved:"
-        %ul
-          - @incident.errors.full_messages.each do |msg|
-            %li= msg
-
-    .field
-      .form-label.inline= f.label :incident_time
-      .form-datepicker.inline.datetimepicker.input-group.date
-        %span.inline
-          = f.text_field :incident_time
-        %span.input-group-addon.inline
-          %span.glyphicon.glyphicon-calendar
-
-    .field
-      .form-label.inline= f.label :detection_time
-      .form-datepicker.inline.datetimepicker.input-group.date
-        %span.inline
-          = f.text_field :detection_time
-        %span.input-group-addon.inline
-          %span.glyphicon.glyphicon-calendar
-
-    .field
-      .form-label.inline= f.label :resolution_time
-      .form-datepicker.inline.datetimepicker.input-group.date
-        %span.inline
-          = f.text_field :resolution_time
-        %span.input-group-addon.inline
-          %span.glyphicon.glyphicon-calendar
-
-    .field
-      .form-label.inline= f.label :closed_time
-      .form-datepicker.inline.datetimepicker.input-group.date
-        %span.inline
-          = f.text_field :closed_time
-        %span.input-group-addon.inline
-          %span.glyphicon.glyphicon-calendar
-
-    .field
-      = f.label :summary
-      = f.text_area :summary
-    .field
-      = f.label :method_of_detection
-      = f.text_field :method_of_detection
-    .field
-      = f.label :severity
-      = f.number_field :severity
-    .field
-      = f.label :source_of_incident
-      = f.text_field :source_of_incident
-    .field
-      = f.label :symptoms
-      = f.text_area :symptoms
-    .field
-      = f.label :faulted_service
-      = f.select "faulted_service_id", @services.map{|s| [s.name, s.id]}
-    .field
-      = f.label :resolution
-      = f.text_area :resolution
-    .field
-      = f.label :follow_ups
-      = f.text_area :follow_ups
-    .field
-      = f.label :contact_people
-      = f.text_field :contact_people
-    .field
-      = f.label :tags
-      = f.text_area :tags
-    .field
-      = f.label :hosts
-      = f.text_area :hosts
-    .field
-      = f.label :task_url
-      = f.text_field :task_url
-    .actions
-      = f.submit 'Save'
+= form_for @incident, :html => {:class => "form-horizontal", :id => "components"} do |f|
+  - if @incident.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@incident.errors.count, "error")} prohibited this incident from being saved:"
+      %ul
+        - @incident.errors.full_messages.each do |msg|
+          %li= msg
+  %fieldset
+    .tab-content
+      #input.tab-pane.active
+        .component
+          .form-group
+            = f.label :incident_time, class: "col-md-4 control-label"
+            .col-md-4
+              .form-datepicker.inline.datetimepicker.input-group.date
+                %span.inline
+                  = f.text_field :incident_time, class: "form-control input-md"
+                %span.input-group-addon.inline
+                  %span.glyphicon.glyphicon-calendar
+              %span.help-block When the incident occurred.
+        .component
+          .form-group
+            = f.label :detection_time, class: "col-md-4 control-label"
+            .col-md-4
+              .form-datepicker.inline.datetimepicker.input-group.date
+                %span.inline
+                  = f.text_field :detection_time, class: "form-control input-md"
+                %span.input-group-addon.inline
+                  %span.glyphicon.glyphicon-calendar
+              %span.help-block When the incident was detected.
+        .component
+          .form-group
+            = f.label :resolution_time, class: "col-md-4 control-label"
+            .col-md-4
+              .form-datepicker.inline.datetimepicker.input-group.date
+                %span.inline
+                  = f.text_field :resolution_time, class: "form-control input-md"
+                %span.input-group-addon.inline
+                  %span.glyphicon.glyphicon-calendar
+              %span.help-block When the incident was resolved.
+        .component
+          .form-group
+            = f.label :closed_time, class: "col-md-4 control-label"
+            .col-md-4
+              .form-datepicker.inline.datetimepicker.input-group.date
+                %span.inline
+                  = f.text_field :closed_time, class: "form-control input-md"
+                %span.input-group-addon.inline
+                  %span.glyphicon.glyphicon-calendar
+              %span.help-block When the incident was closed.
+        .component
+          .form-group
+            = f.label :summary, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_area :summary, class: "form-control"
+              %span.help-block Summary of the incident that occurred.
+        .component
+          .form-group
+            = f.label :method_of_detection, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_field :method_of_detection, class: "form-control input-md"
+              %span.help-block How you detected the incident.
+        .component
+          .form-group
+            = f.label :severity, class: "col-md-4 control-label"
+            .col-md-4
+              = f.number_field :severity, class: "form-control input-md"
+              %span.help-block The severity of the incident, on a scale of 0 to 4.
+        .component
+          .form-group
+            = f.label :source_of_incident, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_field :source_of_incident, class: "form-control input-md"
+              %span.help-block How you detected the incident.
+        .component
+          .form-group
+            = f.label :symptoms, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_area :symptoms, class: "form-control"
+              %span.help-block Symptoms of the incident that occurred.
+        .component
+          .form-group
+            = f.label :faulted_service, class: "col-md-4 control-label"
+            .col-md-4.dropdown-menu
+              = f.select :faulted_service, @services.map{ |s| [s.name, s.id] }, class: "form-control"
+              %span.help-block The service that was part of this incident.
+        .component
+          .form-group
+            = f.label :resolution, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_area :resolution, class: "form-control"
+              %span.help-block Resolution of the incident that occurred. Include details.
+        .component
+          .form-group
+            = f.label :follow_ups, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_area :follow_ups, class: "form-control"
+              %span.help-block Follow-ups of the incident that occurred.
+        .component
+          .form-group
+            = f.label :contact_people, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_field :contact_people, class: "form-control input-md"
+              %span.help-block People to contact when such incident occurs.
+        .component
+          .form-group
+            = f.label :tags, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_area :tags, class: "form-control"
+              %span.help-block Tags, space separated.
+        .component
+          .form-group
+            = f.label :hosts, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_area :hosts, class: "form-control"
+              %span.help-block Hosts affected by this incident, space separated.
+        .component
+          .form-group
+            = f.label :task_url, class: "col-md-4 control-label"
+            .col-md-4
+              = f.text_area :task_url, class: "form-control"
+              %span.help-block Asana task link.
+            .col-sm-4
+              = f.submit "Create Incident!", class: "btn btn-primary"
