@@ -1,21 +1,19 @@
-%h1 Listing features
+- title "All Features"
+%h2 Services
+= link_to 'New Feature', new_feature_path, class: "btn btn-sm btn-primary pull-right"
 
-%table
+%table.table.table-striped
   %thead
     %tr
-      %th Name
-      %th
-      %th
-      %th
+      %th Id
+      %th Feature Name
 
   %tbody
     - @features.each do |feature|
       %tr
+        %td= feature.id
         %td= feature.name
-        %td= link_to 'Show', feature
-        %td= link_to 'Edit', edit_feature_path(feature)
-        %td= link_to 'Destroy', feature, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Feature', new_feature_path
+        %td
+          = link_to 'Show', feature, class: "btn btn-sm btn-info"
+          = link_to 'Edit', edit_feature_path(feature), class: "btn btn-sm btn-primary"
+          = link_to 'Destroy', feature, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-sm btn-danger"

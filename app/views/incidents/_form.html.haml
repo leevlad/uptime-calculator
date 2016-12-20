@@ -71,7 +71,7 @@
             = f.label :source_of_incident, class: "col-md-4 control-label"
             .col-md-4
               = f.text_field :source_of_incident, class: "form-control input-md"
-              %span.help-block How you detected the incident.
+              %span.help-block Source of the incident.
         .component
           .form-group
             = f.label :symptoms, class: "col-md-4 control-label"
@@ -80,9 +80,9 @@
               %span.help-block Symptoms of the incident that occurred.
         .component
           .form-group
-            = f.label :faulted_service, class: "col-md-4 control-label"
-            .col-md-4.dropdown-menu
-              = f.select :faulted_service, @services.map{ |s| [s.name, s.id] }, class: "form-control"
+            = f.label :faulted_service_id, class: "col-md-4 control-label"
+            .col-md-4
+              = f.number_field :faulted_service_id, class: "form-control input-md"
               %span.help-block The service that was part of this incident.
         .component
           .form-group

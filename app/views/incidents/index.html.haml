@@ -25,6 +25,7 @@
         %td= incident.hosts
         %td= incident.task_url
         %td
+          = link_to 'Review', incident_review_path(incident), :method => :post, class: "btn btn-sm btn-info"
           = link_to 'Show', incident, class: "btn btn-sm btn-info"
           = link_to 'Edit', edit_incident_path(incident), class: "btn btn-sm btn-primary"
           = link_to 'Destroy', incident, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-sm btn-danger"

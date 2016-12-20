@@ -40,6 +40,9 @@ gem 'bootstrap3-datetimepicker-rails'
 # using psql for the db, in prod and dev (search)
 gem 'pg'
 
+# Autocomplete
+gem 'rails-jquery-autocomplete'
+
 group :development, :test do
   gem 'byebug'
 end

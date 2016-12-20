@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :edit, :update, :destroy]
+  before_action :set_incident, only: [:show, :edit, :update, :destroy, :review, :mark_reviewed]
   before_action :preload_services, only: [:new, :edit, :update, :create]
 
   # GET /incidents
@@ -25,6 +25,7 @@ class IncidentsController < ApplicationController
   # POST /incidents
   # POST /incidents.json
   def create
+    byebug
     @incident = Incident.new(incident_params)
 
     respond_to do |format|
@@ -62,6 +63,18 @@ class IncidentsController < ApplicationController
     end
   end
 
+  # POST /incidents/1/review
+  # This is so that we get a nice view of the incident and we can mark it for resolution.
+  def review
+
+  end
+
+  def mark_reviewed
+    @incident.reviewed = true
+    @incident.save!
+
+    redirect_to incidents_path
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_incident

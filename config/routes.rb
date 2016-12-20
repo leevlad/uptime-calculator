@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'search/search'
 
+  post 'incidents/:id/review' => "incidents#review", as: :incident_review
+  post 'incidents/:id/review/mark_reviewed' => "incidents#mark_reviewed", as: :review_incident
+
   resources :features
   resources :incidents
   resources :services
