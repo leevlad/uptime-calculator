@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :features
-  get 'home_page/index'
+  root 'home_page#index'
+
   get 'search/search'
 
+  resources :features
   resources :incidents
   resources :services
   # The priority is based upon order of creation: first created -> highest priority.

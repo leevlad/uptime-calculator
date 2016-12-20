@@ -1,0 +1,12 @@
+%nav.navbar.navbar-default
+  .container
+    .navbar-header
+      %a.navbar-brand{'href' => '/'} Uptime Calculator
+    .navbar-collapse.collapse.navbar-left
+      %ul.nav.navbar-nav
+        %li{'class' => "#{'active' if params[:controller] == 'services'}"}= link_to("Services", services_path)
+        %li{'class' => "#{'active' if params[:controller] == 'incidents'}"}= link_to("Incidents", incidents_path)
+    .navbar-collapse.collapse.navbar-right
+      .btn
+        = link_to 'New Incident', new_incident_path, class: "btn btn-success #{'active' if params[:controller] == 'incidents' && params[:action] == 'new'}"
+
