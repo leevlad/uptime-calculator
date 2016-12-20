@@ -8,5 +8,5 @@
         %li{'class' => "#{'active' if params[:controller] == 'incidents'}"}= link_to("Incidents", incidents_path)
     .navbar-collapse.collapse.navbar-right
       .btn
-        = button_to 'New Incident', new_incident_path, class: "btn btn-success #{'active' if params[:controller] == 'incidents' && params[:action] == 'new'}", method: "get"
+        = link_to 'New Incident', new_incident_path, class: "btn btn-success #{'active' if params[:controller] == 'incidents' && params[:action] == 'new'}"
 

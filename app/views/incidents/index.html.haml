@@ -1,4 +1,4 @@
-- title "Incidents"
+- title "All Incidents"
 
 %table.table.table-striped
   %thead
@@ -12,8 +12,6 @@
       %th Hosts
       %th Task url
       %th
-      %th
-      %th
 
   %tbody
     - @incidents.each do |incident|
@@ -26,9 +24,10 @@
         %td= incident.tags
         %td= incident.hosts
         %td= incident.task_url
-        %td= button_to 'Show', incident, class: "btn btn-sm btn-info", method: "get"
-        %td= button_to 'Edit', edit_incident_path(incident), class: "btn btn-sm btn-primary", method: "get"
-        %td= button_to 'Destroy', incident, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-sm btn-danger", method: "get"
+        %td
+          = link_to 'Show', incident, class: "btn btn-sm btn-info"
+          = link_to 'Edit', edit_incident_path(incident), class: "btn btn-sm btn-primary"
+          = link_to 'Destroy', incident, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-sm btn-danger"
 
 %br
 
