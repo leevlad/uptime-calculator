@@ -82,7 +82,7 @@
           .form-group
             = f.label :faulted_service_id, class: "col-md-4 control-label"
             .col-md-4
-              = f.number_field :faulted_service_id, class: "form-control input-md"
+              = f.select "faulted_service_id", @services.map{|s| [s.name, s.id]}, class: "form-control input-md"
               %span.help-block The service that was part of this incident.
         .component
           .form-group
@@ -120,5 +120,5 @@
             .col-md-4
               = f.text_area :task_url, class: "form-control"
               %span.help-block Asana task link.
-            .col-sm-4
-              = f.submit "Create Incident!", class: "btn btn-primary"
+  .component
+    = f.submit "Create Incident!", class: "btn btn-primary"

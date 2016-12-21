@@ -25,7 +25,6 @@ class IncidentsController < ApplicationController
   # POST /incidents
   # POST /incidents.json
   def create
-    byebug
     @incident = Incident.new(incident_params)
 
     respond_to do |format|
